@@ -1,0 +1,170 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Yapi搭建流程 | JCAlways</title><meta name="keywords" content="Yapi"><meta name="author" content="Always"><meta name="copyright" content="Always"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="📖 本教程更新于 2021 年 02 月 25 日   搭建步骤相关连接 mongodb Yapi  安装 MongoDB 数据库请默认放到 c 盘 在 c 盘根目录创建 data 文件夹 创建 data&#x2F;db data&#x2F;log 配置 path 环境变量 1C:\Program Files\MongoDB\Server\4.4\bin  运行 1&quot;C:\Program Files\Mo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Yapi搭建流程">
+<meta property="og:url" content="https://blog.zhangsifan.com/posts/210513ya/index.html">
+<meta property="og:site_name" content="JCAlways">
+<meta property="og:description" content="📖 本教程更新于 2021 年 02 月 25 日   搭建步骤相关连接 mongodb Yapi  安装 MongoDB 数据库请默认放到 c 盘 在 c 盘根目录创建 data 文件夹 创建 data&#x2F;db data&#x2F;log 配置 path 环境变量 1C:\Program Files\MongoDB\Server\4.4\bin  运行 1&quot;C:\Program Files\Mo">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2020-02-22T15:24:38.000Z">
+<meta property="article:modified_time" content="2021-05-13T07:29:28.831Z">
+<meta property="article:author" content="Always">
+<meta property="article:tag" content="Yapi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://blog.zhangsifan.com/posts/210513ya/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//s4.cnzz.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script async="async" data-pjax="data-pjax" src="https://s4.cnzz.com/z_stat.php?id=1279685447&amp;web_id=1279685447"></script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"bottom-left"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Yapi搭建流程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-05-13 15:29:28'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="JCAlways" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://i.loli.net/2019/10/13/2a6ve3ZdW8TPCNY.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">JCAlways</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Yapi搭建流程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-02-22T15:24:38.000Z" title="发表于 2020-02-22 23:24:38">2020-02-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-05-13T07:29:28.831Z" title="更新于 2021-05-13 15:29:28">2021-05-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/">技术文档</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Yapi搭建流程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><div class="note blue icon flat"><i class="note-icon fas fa-bullhorn"></i><p>📖 本教程更新于 2021 年 02 月 25 日</p>
+</div>
+
+<h1 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h1><h2 id="相关连接"><a href="#相关连接" class="headerlink" title="相关连接"></a>相关连接</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.mongodb.com/download-center">mongodb</a></li>
+<li><a target="_blank" rel="noopener" href="https://hellosean1025.github.io/yapi/devops/index.html">Yapi</a></li>
+</ul>
+<h2 id="安装-MongoDB-数据库"><a href="#安装-MongoDB-数据库" class="headerlink" title="安装 MongoDB 数据库"></a>安装 MongoDB 数据库</h2><p>请默认放到 c 盘</p>
+<p>在 c 盘根目录创建 data 文件夹 创建 data/db data/log</p>
+<p>配置 path 环境变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Program Files\MongoDB\Server\4.4\bin</span><br></pre></td></tr></table></figure>
+
+<p>运行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;C:\Program Files\MongoDB\Server\4.4\bin\mongod.exe&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装-Yapi"><a href="#安装-Yapi" class="headerlink" title="安装 Yapi"></a>安装 Yapi</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mkdir yapi</span><br><span class="line">cd yapi</span><br><span class="line">git clone https://github.com/YMFE/yapi.git vendors</span><br><span class="line">cp vendors/config_example.json ./config.json //复制完成后请修改相关配置</span><br><span class="line">cd vendors</span><br><span class="line">npm install --production --registry https://registry.npm.taobao.org</span><br><span class="line">npm run install-server</span><br><span class="line">node server/app.js</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// confog.json</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;port&quot;</span>: <span class="string">&quot;3000&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;adminAccount&quot;</span>: <span class="string">&quot;admin@admin.com&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;timeout&quot;</span>: <span class="number">120000</span>,</span><br><span class="line">  <span class="attr">&quot;db&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;servername&quot;</span>: <span class="string">&quot;127.0.0.1&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;DATABASE&quot;</span>: <span class="string">&quot;yapi&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;port&quot;</span>: <span class="number">27017</span>,</span><br><span class="line">    <span class="attr">&quot;authSource&quot;</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;mail&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;enable&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">&quot;host&quot;</span>: <span class="string">&quot;smtp.163.com&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;port&quot;</span>: <span class="number">465</span>,</span><br><span class="line">    <span class="attr">&quot;from&quot;</span>: <span class="string">&quot;***@163.com&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;auth&quot;</span>: &#123;</span><br><span class="line">      <span class="attr">&quot;user&quot;</span>: <span class="string">&quot;***@163.com&quot;</span>,</span><br><span class="line">      <span class="attr">&quot;pass&quot;</span>: <span class="string">&quot;*****&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="一键运行"><a href="#一键运行" class="headerlink" title="一键运行"></a>一键运行</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">start cmd /k &quot;C:\Program Files\MongoDB\Server\4.4\bin\mongod.exe&quot;</span><br><span class="line">TIMEOUT /T 3</span><br><span class="line">start cmd /k node &quot;D:\Program Files\yapi\vendors\server\app.js&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>默认用户名 <a href="mailto:&#x61;&#x64;&#x6d;&#x69;&#110;&#x40;&#97;&#x64;&#x6d;&#x69;&#110;&#46;&#99;&#x6f;&#109;">&#x61;&#x64;&#x6d;&#x69;&#110;&#x40;&#97;&#x64;&#x6d;&#x69;&#110;&#46;&#99;&#x6f;&#109;</a><br>默认密码 ymfe.org</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Always</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.zhangsifan.com/posts/210513ya/">https://blog.zhangsifan.com/posts/210513ya/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.zhangsifan.com" target="_blank">JCAlways</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Yapi/">Yapi</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/20210513vp/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">VuePress搭建流程</div></div></a></div><div class="next-post pull-right"><a href="/posts/navs/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">文章导航</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://i.loli.net/2019/10/13/2a6ve3ZdW8TPCNY.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Always</div><div class="author-info__description">前端技术分享</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/jcalways"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/jcalways" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:zhangsiz@vip.qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">本博客正在重新搭建,敬请期待</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.</span> <span class="toc-text">搭建步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.1.</span> <span class="toc-text">相关连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-MongoDB-%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.2.</span> <span class="toc-text">安装 MongoDB 数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-Yapi"><span class="toc-number">1.3.</span> <span class="toc-text">安装 Yapi</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E9%94%AE%E8%BF%90%E8%A1%8C"><span class="toc-number">1.4.</span> <span class="toc-text">一键运行</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/20210513vp/" title="VuePress搭建流程"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="VuePress搭建流程"/></a><div class="content"><a class="title" href="/posts/20210513vp/" title="VuePress搭建流程">VuePress搭建流程</a><time datetime="2020-02-22T15:24:38.000Z" title="发表于 2020-02-22 23:24:38">2020-02-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/210513ya/" title="Yapi搭建流程"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Yapi搭建流程"/></a><div class="content"><a class="title" href="/posts/210513ya/" title="Yapi搭建流程">Yapi搭建流程</a><time datetime="2020-02-22T15:24:38.000Z" title="发表于 2020-02-22 23:24:38">2020-02-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/navs/" title="文章导航"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="文章导航"/></a><div class="content"><a class="title" href="/posts/navs/" title="文章导航">文章导航</a><time datetime="2019-10-31T16:00:00.000Z" title="发表于 2019-11-01 00:00:00">2019-11-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/210513jq/" title="Jquery的常见问题"><img src="https://i.loli.net/2019/10/14/moZyndVtYAwRiLe.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Jquery的常见问题"/></a><div class="content"><a class="title" href="/posts/210513jq/" title="Jquery的常见问题">Jquery的常见问题</a><time datetime="2019-10-14T12:29:46.000Z" title="发表于 2019-10-14 20:29:46">2019-10-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/210417hs/" title="Hexo博客搭建流程"><img src="https://i.loli.net/2019/10/14/J3N8wOX9h1RTC6j.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo博客搭建流程"/></a><div class="content"><a class="title" href="/posts/210417hs/" title="Hexo博客搭建流程">Hexo博客搭建流程</a><time datetime="2019-09-19T12:00:00.000Z" title="发表于 2019-09-19 20:00:00">2019-09-19</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2021 By Always</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://uweb.umeng.com/v1/login.php?siteid=1279685447"><span>站长统计</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
